@@ -1,5 +1,5 @@
 import flask
-import dill as pickle
+from sklearn.externals import joblib
 
 app = flask.Flask(__name__)
 
@@ -17,9 +17,6 @@ def predict():
 
     # if parameters are found, echo the msg parameter
 
-    with open('./model/model.pkl', 'rb') as file:
-        model = pickle.load(file)
-
     if (params != None):
         text = params.get("msg")
         data["response"] = text
@@ -29,9 +26,6 @@ def predict():
     # return a reponse in json format
     return flask.jsonify(data)
 
-# start the flask app, allow remote connections
-app.run(host='0.0.0.0')
-
-
 if __name__ == '__main__':
+    model = joblib.load('./model/model.pkl')
     app.run(debug=True,host='0.0.0.0')
