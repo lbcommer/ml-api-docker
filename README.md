@@ -3,7 +3,7 @@
 We are going to build a Docker image to expose a machine learning api.
 The api call takes a text as argument and predicts the personality of the person who wrote it.
 
-The models have been build using the following dataset:
+The model has been build using the following dataset:
 
 - [(MBTI) Myers-Briggs Personality Type Dataset](https://www.kaggle.com/datasnaek/mbti-type)
 
@@ -14,6 +14,9 @@ The Machine Learning model is serialized and included into a docker image.
 ```
 docker build -t ml-api-docker:latest .
 ```
+The last built image can be found in the following repository on Docker Hub:
+
+https://hub.docker.com/r/lbcommer/ml-api-docker/
 
 ## How to run the docker container:
 
@@ -33,4 +36,4 @@ http://localhost:5000/predict?msg=very%20happy%20experience
 
 - Add a model to predict the sentiment of the text
 - To use WSGI for production environment
-- Create a serverless version (to be deployed in AWS or GCP)
+- Create as an alternative a serverless version (to be deployed in AWS or GCP)
